@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Embeddable
 @Table(name = "db_attributes")
 public class AttributesModel {
 
