@@ -3,10 +3,12 @@ package com.cardPokemon.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.Comparator;
 
 @Entity
 @Table(name = "db_cards")
-public class PkmCardModel {
+public class PkmCardModel implements Comparable<PkmCardModel> {
 
     @Id
     @Column(name = "pkm_id")
@@ -17,6 +19,9 @@ public class PkmCardModel {
 
     private String name;
 
+    private int total;
+
+    private float average;
     @OneToOne(cascade = CascadeType.ALL)
     @Embedded
     @JoinColumn(name = "attribute_id", referencedColumnName = "attribute_id")
@@ -26,13 +31,13 @@ public class PkmCardModel {
     public PkmCardModel() {
     }
 
-    public PkmCardModel(String nationalNumber, String name, AttributesModel attributesModel){}
-
-    public PkmCardModel(String name) {
+    public PkmCardModel(String nationalDex, String name, int total, float average, AttributesModel attributes) {
+        this.nationalDex = nationalDex;
         this.name = name;
+        this.total = total;
+        this.average = average;
+        this.attributes = attributes;
     }
-
-    public PkmCardModel(Long id) {this.id = id;}
 
     public Long getId() {return id;}
 
@@ -48,9 +53,26 @@ public class PkmCardModel {
 
     public void setName(String name) {this.name = name;}
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public float getAverage() {
+        return average;
+    }
+
+    public void setAverage(float average) {
+        this.average = average;
+    }
+
     public AttributesModel getAttributes() {return attributes;}
 
     public void setAttributes(AttributesModel attributes) {this.attributes = attributes;}
+
 
     @Override
     public String toString() {
@@ -60,5 +82,10 @@ public class PkmCardModel {
                 ", name='" + name + '\'' +
                 ", attributes=" + attributes +
                 '}';
+    }
+
+    @Override
+    public int compareTo(PkmCardModel pkm1) {
+        return Integer.compare(pkm1.getTotal(), getTotal());
     }
 }
