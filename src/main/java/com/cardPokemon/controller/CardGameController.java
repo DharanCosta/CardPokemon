@@ -1,6 +1,7 @@
 package com.cardPokemon.controller;
 
 import com.cardPokemon.models.CardGame;
+import com.cardPokemon.models.CardGameDTO;
 import com.cardPokemon.models.PkmCardModel;
 import com.cardPokemon.repository.AttributesRepository;
 import com.cardPokemon.repository.CardGameRepository;
@@ -11,28 +12,27 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/play")
+@RequestMapping
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 public class CardGameController {
 
     @Autowired
     private CardGameRepository gameRepository;
-
     @Autowired
     private CardRepository cardRepository;
-
     @Autowired
     private GameService gameService;
-
     @Autowired
     private AttributesRepository attributesRepository;
 
-    @GetMapping("/scores")
+
+    @GetMapping("play/scores")
     public ResponseEntity<List<CardGame>> getScores() {
         List<CardGame>  allGamesLists = gameRepository.findAll();
         if(allGamesLists.isEmpty()) {
@@ -42,20 +42,19 @@ public class CardGameController {
         }
     }
 
-    @GetMapping("/scores/total")
+    @GetMapping("play/scores/total")
     public ResponseEntity<String> getTotalScores(){
-        int totalPlayerOne = gameRepository.selectTotalPlayerOne();
-        int totalPlayerTwo = gameRepository.selectTotalPlayerTwo();
-        return ResponseEntity.ok("{\n Total Player 1: "+totalPlayerOne+
-                "\n Total Player 2: "+totalPlayerTwo+"\n }");
+        int totalP1 = gameRepository.selectTotalPlayerOne();
+        int totalP2 = gameRepository.selectTotalPlayerTwo();
+        return ResponseEntity.ok("{\n Total Player 1: "+totalP1+
+                "\n Total Player 2: "+totalP2+"\n }");
     }
 
+    @PostMapping("play/newround")
+    public ResponseEntity<CardGame> newRound(@RequestBody CardGameDTO cards){
 
-    @PostMapping
-    public ResponseEntity<CardGame> newRound(@RequestBody ObjectNode cards){
-
-        long playerOneCard = cards.get("p1Card").longValue();
-        long playerTwoCard = cards.get("p2Card").longValue();
+        long playerOneCard = cards.getCardP1().longValue();
+        long playerTwoCard = cards.getCardP2().longValue();
         int playerOneScore = 0;
         int playerTwoScore = 0;
         String winner = "";

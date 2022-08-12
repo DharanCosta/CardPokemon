@@ -10,13 +10,13 @@ public class CardGame {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int playerOneScore = 0;
+    private int scoreP1;
 
-    private int playerTwoScore = 0;
+    private int scoreP2;
 
-//    private int playerOneCard = (int) Math.random() * 1061;
-    private Long playerOneCard;
-    private Long playerTwoCard;
+    private Long cardP1;
+
+    private Long cardP2;
 
     private String winner;
 
@@ -30,10 +30,10 @@ public class CardGame {
     public CardGame() {}
 
     public CardGame(int playerOneScore, int playerTwoScore, Long playerOneCard, Long playerTwoCard, String winner, String loser, PkmCardModel pkmCardPlayer1, PkmCardModel pkmCardPlayer2) {
-        this.playerOneScore = playerOneScore;
-        this.playerTwoScore = playerTwoScore;
-        this.playerOneCard = playerOneCard;
-        this.playerTwoCard = playerTwoCard;
+        this.scoreP1 = playerOneScore;
+        this.scoreP2 = playerTwoScore;
+        this.cardP1 = playerOneCard;
+        this.cardP2 = playerTwoCard;
         this.winner = winner;
         this.loser = loser;
         this.pkmCardPlayer1 = pkmCardPlayer1;
@@ -44,36 +44,36 @@ public class CardGame {
         return id;
     }
 
-    public int getPlayerOneScore() {
-        return playerOneScore;
+    public int getScoreP1() {
+        return scoreP1;
     }
 
-    public void setPlayerOneScore(int playerOneScore) {
-        this.playerOneScore = playerOneScore;
+    public void setScoreP1(int scoreP1) {
+        this.scoreP1 = scoreP1;
     }
 
-    public int getPlayerTwoScore() {
-        return playerTwoScore;
+    public int getScoreP2() {
+        return scoreP2;
     }
 
-    public void setPlayerTwoScore(int playerTwoScore) {
-        this.playerTwoScore = playerTwoScore;
+    public void setScoreP2(int scoreP2) {
+        this.scoreP2 = scoreP2;
     }
 
-    public Long getPlayerOneCard() {
-        return playerOneCard;
+    public Long getCardP1() {
+        return cardP1;
     }
 
-    public void setPlayerOneCard(Long playerOneCard) {
-        this.playerOneCard = playerOneCard;
+    public void setCardP1(Long cardP1) {
+        this.cardP1 = cardP1;
     }
 
-    public Long getPlayerTwoCard() {
-        return playerTwoCard;
+    public Long getCardP2() {
+        return cardP2;
     }
 
-    public void setPlayerTwoCard(Long playerTwoCard) {
-        this.playerTwoCard = playerTwoCard;
+    public void setCardP2(Long cardP2) {
+        this.cardP2 = cardP2;
     }
 
     public String getLoser() {

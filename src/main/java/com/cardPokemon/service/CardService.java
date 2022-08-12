@@ -4,6 +4,10 @@ import com.cardPokemon.models.PkmCardModel;
 import com.cardPokemon.repository.CardRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
@@ -24,6 +28,11 @@ public class CardService {
 
     public Iterable<PkmCardModel> save(List<PkmCardModel> cards) {
         return repository.saveAll(cards);
+    }
+
+    public Page<PkmCardModel> findPage(int pageNumber){
+        Pageable pageable = PageRequest.of(pageNumber - 1,20, Sort.Direction.ASC,"id");
+        return repository.findAll(pageable);
     }
 
     public List<PkmCardModel> findRanked(String field){
