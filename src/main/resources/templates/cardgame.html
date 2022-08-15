@@ -45,22 +45,17 @@
         <form th:action="@{play}" th:object="${CardGameDTO}" method="post">
             <div class="row mt-3">
                 <div class="col">
-                    <input type="text" th:field="${CardGameDTO.cardP1}" class="form-control" placeholder="# Player 1 Card # " name="p1Card">
+                    <input type="number" th:field="${CardGameDTO.cardP1}" class="form-control" placeholder="# Player 1 Card # " name="p1Card">
                 </div>
                 <div class="col">
-                    <input type="text" th:field="${CardGameDTO.cardP2}" class="form-control" placeholder="# Player 2 Card #" name="p2Card">
+                    <input type="number" th:field="${CardGameDTO.cardP2}" class="form-control" placeholder="# Player 2 Card #" name="p2Card">
                 </div>
             </div>
             <div class=" row d-flex justify-content-center mt-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" unchecked>
-                    <label class="form-check-label" for="gridRadios1">
-                        Generate random numbers (Soon)
-                    </label>
-                    <div class="d-grid gap-2 col-10 mx-auto my-3">
+                    <p>If one of the fields above is empty, the cards will be generated randomly</p>
+                    <div class="d-grid gap-2 col-12 mx-auto my-3">
                         <button class="btn btn-primary" type="submit">NEW ROUND</button>
                     </div>
-                </div>
             </div>
         </form>
 <!--        CARD 1               -->
@@ -153,11 +148,19 @@
             </div>
         </div>
 
+        <div class="mt-3">
+            <h2 align="center">Total Games Wins</h2>
+            <div class="d-flex justify-content-center">
+                <p class="mx-5">Player 1: <span th:text="${resultsDTO.totalP1}" class="font-weight-bold"></span></p>
+                <p class="mx-5">Player 2: <span th:text="${resultsDTO.totalP2}" class="font-weight-bold"></span></p>
+            </div>
+        </div>
+
         <div class="tableFixHead mt-5">
             <h2 align="center">Games Results</h2>
             <table class="table table-striped">
                 <thead>
-                    <tr align="center" class="table-info">
+                    <tr align="center" class="bg-info bg-table-head">
                         <th scope="col"># Round</th>
                         <th scope="col">Pkm P1</th>
                         <th scope="col">Pkm P2</th>

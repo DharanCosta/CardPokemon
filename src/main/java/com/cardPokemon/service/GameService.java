@@ -1,6 +1,7 @@
 package com.cardPokemon.service;
 
 import com.cardPokemon.models.CardGame;
+import com.cardPokemon.models.CardGameDTO;
 import com.cardPokemon.models.PkmCardModel;
 import com.cardPokemon.repository.AttributesRepository;
 import com.cardPokemon.repository.CardGameRepository;
@@ -14,6 +15,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class GameService {
@@ -62,23 +64,14 @@ public class GameService {
                 return new CardGame(playerOneScore, playerTwoScore, playerOneCard, playerTwoCard, winner, loser, pkmCard1,pkmCard2);
             }
     }
-//    public Page<CardGame> getGamePages(Pageable pageable){
-//        List<CardGame> cardGames = gameRepository.findAll();
-//        int pageSize = pageable.getPageSize();
-//        int currentPage = pageable.getPageNumber();
-//        int startItem = currentPage * pageSize;
-//        List<CardGame> list;
-//        if (cardGames.size() < startItem) {
-//            list = Collections.emptyList();
-//        } else {
-//            int toIndex = Math.min(startItem + pageSize, cardGames.size());
-//            list = cardGames.subList(startItem, toIndex);
-//        }
-//        Page<CardGame> cardPage
-//                = new PageImpl<CardGame>(list, PageRequest.of(currentPage, pageSize),cardGames.size() );
-//        return cardPage;
-//    }
 
+    public CardGameDTO getRandom(){
+        Random random = new Random();
+        Long p1 = random.nextLong(cardRepository.findAll().size());
+        Long p2 = random.nextLong(cardRepository.findAll().size());
+        return new CardGameDTO(p1,p2);
+
+    }
 
 }
 

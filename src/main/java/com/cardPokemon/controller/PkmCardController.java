@@ -61,7 +61,7 @@ public class PkmCardController {
             ){
         return cardRepository.findAll(
                 PageRequest.of(page.orElse(0),25,
-                        Sort.Direction.ASC, sortBy.orElse("total")
+                        Sort.Direction.DESC, sortBy.orElse("total")
                 )
         );
     }

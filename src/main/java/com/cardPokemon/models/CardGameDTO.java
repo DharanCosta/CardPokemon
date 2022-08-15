@@ -5,6 +5,13 @@ public class CardGameDTO {
 
     private Long cardP2;
 
+    public CardGameDTO(){}
+
+    public CardGameDTO(Long cardP1, Long cardP2) {
+        this.cardP1 = cardP1;
+        this.cardP2 = cardP2;
+    }
+
     public Long getCardP1() {
         return cardP1;
     }
@@ -21,11 +28,12 @@ public class CardGameDTO {
         this.cardP2 = cardP2;
     }
 
-    @Override
-    public String toString() {
-        return "CardGameDTO{" +
-                "cardP1=" + cardP1 +
-                ", cardP2=" + cardP2 +
-                '}';
-    }
+
+    //    @Override
+//    public String toString() {
+//        return "CardGameDTO{" +
+//                "cardP1=" + cardP1 +
+//                ", cardP2=" + cardP2 +
+//                '}';
+//    }
 }
