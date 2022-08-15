@@ -3,6 +3,7 @@ package com.cardPokemon.controller;
 import com.cardPokemon.models.CardGame;
 import com.cardPokemon.models.CardGameDTO;
 import com.cardPokemon.models.PkmCardModel;
+import com.cardPokemon.models.ResultsDTO;
 import com.cardPokemon.repository.CardGameRepository;
 import com.cardPokemon.repository.CardRepository;
 import com.cardPokemon.service.CardService;
@@ -50,6 +51,8 @@ public class FrontController {
         model.addAttribute("CardGameLastItem", lastItem);
         model.addAttribute("CardGameDTO", cardGameDTO);
 
+        ResultsDTO resultsDTO = new ResultsDTO(gameRepository.selectTotalPlayerOne(),gameRepository.selectTotalPlayerTwo());
+        model.addAttribute("resultsDTO", resultsDTO);
         return "cardgame";
     }
 
@@ -75,21 +78,24 @@ public class FrontController {
 
     @PostMapping ("/play")
     public String saveNewRound(@ModelAttribute ("CardGameDTO") CardGameDTO cards){
-        System.out.println(cards);
-        long playerOneCard = cards.getCardP1().longValue();
-        long playerTwoCard = cards.getCardP2().longValue();
         int playerOneScore = 0;
         int playerTwoScore = 0;
         String winner = "";
         String loser = "";
-        PkmCardModel pkmCard1 = cardRepository.findById(playerOneCard).get();
-        PkmCardModel pkmCard2 = cardRepository.findById(playerTwoCard).get();
-        CardGame newRound = gameService.getWinner(playerOneScore,playerTwoScore,playerOneCard,playerTwoCard,winner,loser,pkmCard1,pkmCard2);
-        gameRepository.save(newRound);
-
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("new_round");
-//        modelAndView.addObject("cards", cards);
+        if(cards.getCardP1() == null || cards.getCardP2() == null){
+                CardGameDTO random = gameService.getRandom();
+                PkmCardModel pkmCard1 = cardRepository.findById(random.getCardP1()).get();
+                PkmCardModel pkmCard2 = cardRepository.findById(random.getCardP2()).get();
+                CardGame newRound = gameService.getWinner(playerOneScore,playerTwoScore,random.getCardP1(),random.getCardP2(),winner,loser,pkmCard1,pkmCard2);
+                gameRepository.save(newRound);
+        }else{
+                long playerOneCard = cards.getCardP1().longValue();
+                long playerTwoCard = cards.getCardP2().longValue();
+                PkmCardModel pkmCard1 = cardRepository.findById(playerOneCard).get();
+                PkmCardModel pkmCard2 = cardRepository.findById(playerTwoCard).get();
+                CardGame newRound = gameService.getWinner(playerOneScore,playerTwoScore,playerOneCard,playerTwoCard,winner,loser,pkmCard1,pkmCard2);
+                gameRepository.save(newRound);
+        }
         return "redirect:/play";
     }
 
