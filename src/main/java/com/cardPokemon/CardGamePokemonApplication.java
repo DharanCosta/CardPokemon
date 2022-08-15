@@ -22,7 +22,7 @@ public class CardGamePokemonApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CardGamePokemonApplication.class, args);
 	}
-// GENERATE COMPLETE POKEDÉX AFTER DROP THE DATABASE
+	// GENERATE COMPLETE POKÉDEX
 
 //	@Bean
 //	CommandLineRunner runner(CardService cardService) {

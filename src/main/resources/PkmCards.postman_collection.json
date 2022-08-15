@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "cfd6333c-beb6-425c-a225-e0ba323498b1",
+		"name": "PkmCards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19558860"
+	},
+	"item": [
+		{
+			"name": "Front",
+			"item": []
+		},
+		{
+			"name": "Cards",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cards/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cards",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cards/56",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cards",
+								"56"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RankedByTotalOrAverageOrName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cards/ranked/average",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cards",
+								"ranked",
+								"average"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RankedPaginated(?page=)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cards/ranked?sortBy=name",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cards",
+								"ranked"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewCard",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n  {\r\n        \"nationalDex\": \"906\",\r\n        \"name\": \"Sprigatito\",\r\n        \"total\": 405,\r\n        \"average\": 67.5,\r\n        \"attributes\": {\r\n            \"hp\": 60,\r\n            \"attack\": 62,\r\n            \"defense\": 63,\r\n            \"specialAttack\": 80,\r\n            \"specialDefense\": 80,\r\n            \"speed\": 60\r\n        }\r\n  }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCard",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1062,\r\n    \"nationalDex\": \"906\",\r\n    \"name\": \"Sprigatito2\",\r\n    \"total\": 405,\r\n    \"average\": 67.5,\r\n    \"attributes\": {\r\n        \"id\": 1062,\r\n        \"hp\": 60,\r\n        \"attack\": 62,\r\n        \"defense\": 63,\r\n        \"specialAttack\": 80,\r\n        \"specialDefense\": 80,\r\n        \"speed\": 60\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCard",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cards/1062",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cards",
+								"1062"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Games",
+			"item": [
+				{
+					"name": "Scores List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/play/scores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"play",
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetScoresPage",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "pageNumber",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/play/scores/page/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"play",
+								"scores",
+								"page",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FinalScore",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/play/scores/total",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"play",
+								"scores",
+								"total"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Play New Round",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cardP1\" : 352,\r\n    \"cardP2\" : 555\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/play/newround",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"play",
+								"newround"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PlayNewRandomRound",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/play/random",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"play",
+								"random"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/play/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"play",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAllRounds",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/play/delete/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"play",
+								"delete",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

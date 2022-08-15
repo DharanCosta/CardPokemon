@@ -31,7 +31,7 @@ public class CardService {
     }
 
     public Page<PkmCardModel> findPage(int pageNumber){
-        Pageable pageable = PageRequest.of(pageNumber - 1,20, Sort.Direction.ASC,"id");
+        Pageable pageable = PageRequest.of(pageNumber - 1,30, Sort.Direction.ASC,"id");
         return repository.findAll(pageable);
     }
 

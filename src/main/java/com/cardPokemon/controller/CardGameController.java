@@ -7,17 +7,14 @@ import com.cardPokemon.models.ResultsDTO;
 import com.cardPokemon.repository.AttributesRepository;
 import com.cardPokemon.repository.CardGameRepository;
 import com.cardPokemon.repository.CardRepository;
-
 import com.cardPokemon.service.GameService;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
