@@ -1,10 +1,9 @@
 package com.cardPokemon.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Columns;
+
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Embeddable

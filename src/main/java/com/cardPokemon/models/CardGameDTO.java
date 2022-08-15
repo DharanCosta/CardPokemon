@@ -28,12 +28,4 @@ public class CardGameDTO {
         this.cardP2 = cardP2;
     }
 
-
-    //    @Override
-//    public String toString() {
-//        return "CardGameDTO{" +
-//                "cardP1=" + cardP1 +
-//                ", cardP2=" + cardP2 +
-//                '}';
-//    }
 }

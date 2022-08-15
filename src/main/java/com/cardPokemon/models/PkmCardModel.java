@@ -3,8 +3,6 @@ package com.cardPokemon.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.Comparator;
 
 @Entity
 @Table(name = "db_cards")
