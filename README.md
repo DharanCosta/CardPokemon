@@ -69,7 +69,7 @@ Para instalar/executar este projeto, siga as seguintes etapas:
 
 ![Run](https://user-images.githubusercontent.com/41304141/184703263-c738fe91-648a-4161-b0a1-05da94721bef.jpg)
 
-- Importar coleção do projeto no Postman;
+- Importar a <a href="https://github.com/DharanCosta/CardPokemon/blob/c7badf65f6408d4d26799c90afff75358a322509/src/main/resources/PkmCards.postman_collection.json">Coleção</a> do projeto no Postman;
 
 ![ImportPostman](https://user-images.githubusercontent.com/41304141/184702066-7addfce5-1236-4bb9-8e7e-97634b3f801e.jpg)
 
