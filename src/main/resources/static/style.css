@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800;900&family=Ubuntu:ital,wght@0,300;0,700;1,400&display=swap');
+
+body{
+   background: url([[@{/bg.jpg}]])
+   no-repeat center center fixed;
+}
+
+div.cont{
+    background-color:rgb(255, 255, 255, 0.6);
+    border-right: 1px solid #002966;
+    border-left: 1px solid #002966;
+    border-bottom: 1px solid #002966;
+}
+nav {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+
+p,h,a,span,td,th{
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400px;
+}
+.btn-size{
+    width: 250px;
+}
+.fweight{
+    font-weight: 800px;
+}
+.card{
+    border-radius: 9px;
+    box-shadow: 0 0 0.7em #000033;
+}
+.status{
+    background-color: #ccddff;
+    padding: 3px;
+    border:2px solid #002266;
+    border-radius: 9px;
+}
+
+.scoreboard{
+
+    max-width: 30rem;
+    background-color: #ffffb3;
+    border:2px solid #081e66;
+    border-radius: 9px;
+}
+
+th { background:#004080; }
+.bg-table-head,thead,th{ background: #004080; color: #e6f2ff; font-size:1rem;}
+.tableFixHead          { overflow: auto; height: 500px; }
+.tableFixHead thead th { position: sticky; top: 0; z-index: 1;  }
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {background-color: #cce6ff;}
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {background-color: #ffffff;}
+
+
+.footclass{
+    background-color:rgb(255, 255, 255, 0.5);
+}
+.font-footer,a{
+    font-size:1rem;
+    color: #000000;
+}
+
+.regions{
+    color: #003d99;
+}

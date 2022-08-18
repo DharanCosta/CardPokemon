@@ -66,6 +66,9 @@ public class FrontController {
         model.addAttribute("CardGameLastItem", lastItem);
         model.addAttribute("CardGameDTO", cardGameDTO);
 
+        ResultsDTO resultsDTO = new ResultsDTO(gameRepository.selectTotalPlayerOne(),gameRepository.selectTotalPlayerTwo());
+        model.addAttribute("resultsDTO", resultsDTO);
+
         return "cardgame";
     }
 
