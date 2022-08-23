@@ -1,8 +1,9 @@
-package com.cardPokemon.models;
+package com.cardpokemon.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "db_cards")
@@ -71,7 +72,6 @@ public class PkmCardModel implements Comparable<PkmCardModel> {
 
     public void setAttributes(AttributesModel attributes) {this.attributes = attributes;}
 
-
     @Override
     public String toString() {
         return "PkmCardModel{" +
@@ -85,5 +85,18 @@ public class PkmCardModel implements Comparable<PkmCardModel> {
     @Override
     public int compareTo(PkmCardModel pkm1) {
         return Integer.compare(pkm1.getTotal(), getTotal());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PkmCardModel that = (PkmCardModel) o;
+        return total == that.total && Float.compare(that.average, average) == 0 && Objects.equals(id, that.id) && nationalDex.equals(that.nationalDex) && name.equals(that.name) && Objects.equals(attributes, that.attributes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nationalDex, name, total, average, attributes);
     }
 }

@@ -1,6 +1,6 @@
-package com.cardPokemon.repository;
+package com.cardpokemon.repository;
 
-import com.cardPokemon.models.CardGame;
+import com.cardpokemon.models.CardGame;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

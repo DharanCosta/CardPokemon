@@ -1,6 +1,6 @@
-package com.cardPokemon.repository;
+package com.cardpokemon.repository;
 
-import com.cardPokemon.models.AttributesModel;
+import com.cardpokemon.models.AttributesModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AttributesRepository extends JpaRepository<AttributesModel,Long> {

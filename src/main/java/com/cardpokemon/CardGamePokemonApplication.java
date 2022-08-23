@@ -1,21 +1,9 @@
-package com.cardPokemon;
+package com.cardpokemon;
 
 
 
-import com.cardPokemon.models.PkmCardModel;
-import com.cardPokemon.repository.CardRepository;
-import com.cardPokemon.service.CardService;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-
-import java.io.*;
-import java.util.List;
 
 @SpringBootApplication
 public class CardGamePokemonApplication {

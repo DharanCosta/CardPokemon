@@ -1,4 +1,4 @@
-package com.cardPokemon.models;
+package com.cardpokemon.models;
 
 import javax.persistence.*;
 
