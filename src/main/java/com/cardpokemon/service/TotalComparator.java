@@ -1,6 +1,6 @@
-package com.cardPokemon.service;
+package com.cardpokemon.service;
 
-import com.cardPokemon.models.PkmCardModel;
+import com.cardpokemon.models.PkmCardModel;
 
 import java.util.Comparator;
 

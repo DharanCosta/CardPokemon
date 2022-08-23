@@ -1,6 +1,6 @@
-package com.cardPokemon.repository;
+package com.cardpokemon.repository;
 
-import com.cardPokemon.models.PkmCardModel;
+import com.cardpokemon.models.PkmCardModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CardRepository extends JpaRepository<PkmCardModel, Long> {

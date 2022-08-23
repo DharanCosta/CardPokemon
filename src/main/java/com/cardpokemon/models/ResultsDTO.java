@@ -1,4 +1,4 @@
-package com.cardPokemon.models;
+package com.cardpokemon.models;
 
 public class ResultsDTO {
 

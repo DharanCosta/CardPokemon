@@ -80,7 +80,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/cards/ranked?sortBy=name",
+							"raw": "http://localhost:8080/cards/ranked?page=4&sortBy=total",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -92,8 +92,12 @@
 							],
 							"query": [
 								{
+									"key": "page",
+									"value": "4"
+								},
+								{
 									"key": "sortBy",
-									"value": "name"
+									"value": "total"
 								}
 							]
 						}
@@ -196,6 +200,13 @@
 							"path": [
 								"play",
 								"scores"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -214,7 +225,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/play/scores/page/2",
+							"raw": "http://localhost:8080/play/scores/page/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -224,7 +235,7 @@
 								"play",
 								"scores",
 								"page",
-								"2"
+								"1"
 							]
 						}
 					},

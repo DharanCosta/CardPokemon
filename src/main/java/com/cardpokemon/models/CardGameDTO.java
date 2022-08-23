@@ -1,4 +1,4 @@
-package com.cardPokemon.models;
+package com.cardpokemon.models;
 
 public class CardGameDTO {
     private Long cardP1;
@@ -16,16 +16,15 @@ public class CardGameDTO {
         return cardP1;
     }
 
-    public void setCardP1(Long cardP1) {
-        this.cardP1 = cardP1;
-    }
-
     public Long getCardP2() {
         return cardP2;
+    }
+
+    public void setCardP1(Long cardP1) {
+        this.cardP1 = cardP1;
     }
 
     public void setCardP2(Long cardP2) {
         this.cardP2 = cardP2;
     }
-
 }

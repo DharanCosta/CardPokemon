@@ -1,13 +1,11 @@
-package com.cardPokemon.controller;
+package com.cardpokemon.controller;
 
-import com.cardPokemon.models.PkmCardModel;
-import com.cardPokemon.repository.AttributesRepository;
-import com.cardPokemon.repository.CardRepository;
-import com.cardPokemon.service.CardService;
+import com.cardpokemon.models.PkmCardDTO;
+import com.cardpokemon.models.PkmCardModel;
+import com.cardpokemon.repository.AttributesRepository;
+import com.cardpokemon.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,23 +22,20 @@ public class PkmCardController {
     private CardService cardService;
 
     @Autowired
-    private CardRepository cardRepository;
-
-    @Autowired
     private AttributesRepository attributesRepository;
 
     @GetMapping("/all")
     public ResponseEntity<List<PkmCardModel>> getAllCards(){
-        List<PkmCardModel> allCardsList = cardRepository.findAll();
+        List<PkmCardModel> allCardsList = cardService.findAll();
         if(allCardsList.isEmpty()){
             return ResponseEntity.status(204).build();
         }else{
-            return ResponseEntity.ok(cardRepository.findAll());
+            return ResponseEntity.ok(cardService.findAll());
         }
     }
     @GetMapping("/{id}")
     public ResponseEntity<PkmCardModel> getById(@PathVariable Long id){
-        return cardRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
+        return cardService.findById(id).map(resp -> ResponseEntity.ok(resp))
                 .orElse(ResponseEntity.notFound().build());
     }
     @GetMapping("/ranking/{field}")
@@ -54,28 +49,32 @@ public class PkmCardController {
     }
 
     @GetMapping("/ranked")
-    public Page <PkmCardModel> getRankedAndPageable(
+    public Optional<Page <PkmCardModel>> getRankedAndPageable(
             @RequestParam Optional<Integer> page,
             @RequestParam Optional<String> sortBy
             ){
-        return cardRepository.findAll(
-                PageRequest.of(page.orElse(0),25,
-                        Sort.Direction.DESC, sortBy.orElse("total")
-                )
-        );
+        return cardService.findPage(page.get(), sortBy.get());
     }
 
     @PostMapping
-    public ResponseEntity<PkmCardModel> insertNewCard(@RequestBody PkmCardModel pkmCard){
+    public ResponseEntity<PkmCardModel> insertNewCard(@RequestBody PkmCardDTO pkmCard){
+        PkmCardModel pkmCardModel = new PkmCardModel(pkmCard.getNationalDex(), pkmCard.getName(), pkmCard.getTotal(), pkmCard.getAverage(), pkmCard.getAttributes());
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(cardRepository.save(pkmCard));
+                .body(cardService.saveNew(pkmCardModel));
     }
     @PutMapping
-    public ResponseEntity<PkmCardModel> updateCard(@RequestBody PkmCardModel pkmCard){
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(cardRepository.save(pkmCard));
+    public Optional<PkmCardModel> updateCard(@RequestBody PkmCardDTO pkmCard){
+        return cardService.findById(pkmCard.getId()).map(
+                pkmCardModel -> {
+                    pkmCardModel.setNationalDex(pkmCard.getNationalDex());
+                    pkmCardModel.setName(pkmCard.getName());
+                    pkmCardModel.setTotal(pkmCard.getTotal());
+                    pkmCardModel.setAverage(pkmCard.getAverage());
+                    pkmCardModel.setAttributes(pkmCard.getAttributes());
+                    return cardService.saveNew(pkmCardModel);
+                });
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){ cardRepository.deleteById(id);}
+    public void delete(@PathVariable Long id){ cardService.deleteById(id);}
 
 }
