@@ -39,6 +39,11 @@ public class CardService {
         return repository.saveAll(cards);
     }
 
+    public Optional<Page<PkmCardModel>> findAllPage(int pageNumber){
+        Pageable pageable = PageRequest.of(pageNumber -1,30, Sort.Direction.ASC,"id");
+        return Optional.of(repository.findAll(pageable));
+    }
+
     public Optional<Page<PkmCardModel>> findPage(int pageNumber, String sortBy){
         Pageable pageable = PageRequest.of(pageNumber -1,30, Sort.Direction.DESC, sortBy,"total");
         return Optional.of(repository.findAll(pageable));

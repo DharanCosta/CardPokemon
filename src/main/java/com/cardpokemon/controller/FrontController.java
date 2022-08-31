@@ -83,14 +83,14 @@ public class FrontController {
     }
 
     @GetMapping("/cards")
-    String getPkmCards(Model  model, @RequestParam Optional<String> sortBy){
-        getOnePageCards(model, 1, Optional.of(sortBy.get()));
+    String getPkmCards(Model  model){
+        getOnePageCards(model, 1);
         return "pkmcards";
     }
 
     @GetMapping("/cards/page/{pageNumber}")
-    public String getOnePageCards(Model model, @PathVariable("pageNumber") int currentPage, @RequestParam Optional<String> sortBy){
-        Optional<Page<PkmCardModel>> page = cardService.findPage(currentPage, sortBy.get());
+    public String getOnePageCards(Model model, @PathVariable("pageNumber") int currentPage){
+        Optional<Page<PkmCardModel>> page = cardService.findAllPage(currentPage);
         int totalPages = page.get().getTotalPages();
         long totalItems = page.get().getTotalElements();
         List<PkmCardModel> pkmCards = page.get().getContent();
