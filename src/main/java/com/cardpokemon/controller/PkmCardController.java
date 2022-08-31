@@ -21,9 +21,6 @@ public class PkmCardController {
     @Autowired
     private CardService cardService;
 
-    @Autowired
-    private AttributesRepository attributesRepository;
-
     @GetMapping("/all")
     public ResponseEntity<List<PkmCardModel>> getAllCards(){
         List<PkmCardModel> allCardsList = cardService.findAll();
